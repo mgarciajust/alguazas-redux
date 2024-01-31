@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, setToken, setEmail, setRole } from "./redux/userSlice";
+import { setToken, setEmail, setRole } from "./redux/userSlice";
 import  Header  from "./components/Header.jsx";
 import  Email  from "./components/Email.jsx";
 import  AdminDashboard  from "./components/AdminDashboard.jsx";
@@ -34,8 +34,8 @@ function App() {
             .then((data) => {
                 if (data.status) {
                     dispatch(setToken(data.token));
-                    dispatch(setEmail(data.email));
-                    dispatch(setRole(data.role));
+                    dispatch(setEmail(data.user.email));
+                    dispatch(setRole(data.user.role));
                 } else {
                     console.log("Contraseña incorrecta");
                 }
