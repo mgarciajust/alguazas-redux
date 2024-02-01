@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken, setEmail, setRole } from "./redux/userSlice";
+import { addUser, setToken, setEmail, setRole } from "./redux/userSlice";
 import  Header  from "./components/Header.jsx";
 import  Email  from "./components/Email.jsx";
 import  AdminDashboard  from "./components/AdminDashboard.jsx";
