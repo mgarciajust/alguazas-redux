@@ -15,6 +15,8 @@ function Email({ onLoginFormSubmit }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onLoginFormSubmit(email, password);
+        setEmail("");
+        setPassword("");
     };
 
     return (

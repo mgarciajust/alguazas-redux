@@ -45,8 +45,8 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
-            <Email onLoginFormSubmit={handleLoginFormSubmit} />
+            {!role && <Header />}
+            {!role && <Email onLoginFormSubmit={handleLoginFormSubmit} />}
             {role === "admin" && <AdminDashboard />}
             {role === "user" && <UserDashboard />}
         </div>
