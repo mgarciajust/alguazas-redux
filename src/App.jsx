@@ -12,17 +12,8 @@ function App() {
     const token = useSelector((state) => state.user.token);
     const role = useSelector((state) => state.user.role);
 
-    useEffect(() => {
-        if (token) {
-            if (role === "admin") {
-                <AdminDashboard/>
-            } else if (role === "user") {
-                <UserDashboard/>
-            }
-        }
-    }, [token, role]);
-
     const handleLoginFormSubmit = (email, password) => {
+
         fetch("https://ace-mapi.justcompileit.com/api/auth/login", {
             method: "POST",
             body: JSON.stringify({ email, password }),
@@ -36,12 +27,18 @@ function App() {
                     dispatch(setToken(data.token));
                     dispatch(setEmail(data.user.email));
                     dispatch(setRole(data.user.role));
+                    console.log(data)
                 } else {
                     console.log("Contraseña incorrecta");
                 }
             })
             .catch((err) => console.log(err));
     };
+
+    useEffect(() => {
+        console.log(token)
+        console.log(role)
+    }, [token, role])
 
     return (
         <div className="App">

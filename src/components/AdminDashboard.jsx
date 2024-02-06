@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userSlice";
 import { useLocation } from "react-router-dom";
 
 export default function AdminDashboard() {
   const dispatch = useDispatch();
   const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname !== "/admin") {
-      window.location.href = "/admin";
-    }
-  }, [location.pathname]);
+  const user = useSelector((state) => state.user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -22,6 +17,7 @@ export default function AdminDashboard() {
     <>
       <div>
         <h4>soy un ADMIN dashboard</h4>
+        <p>Email: {user.email}</p>
         <button onClick={handleLogout}>Log out</button>
       </div>
     </>
