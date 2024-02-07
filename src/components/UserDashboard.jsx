@@ -16,7 +16,13 @@ export default function UserDashboard() {
         navigation("/")
       };
     
-      useEffect(() => { navigation("/user"); }, []);
+      useEffect(() => {
+        if (!user.token || !user.role) {
+          navigation("/");
+        } else {
+          navigation("/user");
+        }
+      }, [user.token, user.role]);
 
   return (
     <>

@@ -15,7 +15,13 @@ export default function AdminDashboard() {
     navigation("/")
   };
 
-  useEffect(() => { navigation("/admin"); }, []);
+  useEffect(() => {
+    if (!user.token || !user.role) {
+      navigation("/");
+    } else {
+      navigation("/admin");
+    }
+  }, [user.token, user.role]);
 
 
   return (
