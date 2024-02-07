@@ -11,7 +11,7 @@ export default function UserDashboard() {
 
   
     const handleLogout = () => {
-        console.log("Saliendo de user")
+        console.log("Saliendo de user!")
         dispatch(logout());
         navigation("/")
       };

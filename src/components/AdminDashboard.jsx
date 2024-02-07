@@ -10,7 +10,7 @@ export default function AdminDashboard() {
   const user = useSelector((state) => state.user);
 
   const handleLogout = () => {
-    console.log("Saliendo de admin")
+    console.log("Saliendo de admin!")
     dispatch(logout());
     navigation("/")
   };
