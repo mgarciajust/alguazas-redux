@@ -1,30 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userSlice";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from 'react-router-dom'
-
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function AdminDashboard() {
   const dispatch = useDispatch();
-  const location = useLocation();
+  const location = useLocation()
+  const navigation = useNavigate()
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    redirectToHome()
-  }, [])
-
-  let navigate = useNavigate()
-
-
-  const redirectToHome = () => {
-        navigate('/')
-    }
-
   const handleLogout = () => {
+    console.log("Saliendo de admin")
     dispatch(logout());
-    redirectToHome()
+    navigation("/")
   };
+
+  useEffect(() => { navigation("/admin"); }, []);
+
 
   return (
     <>
